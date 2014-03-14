@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html class="no-js">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Place favicon.ico and apple-touch-icon(s) in the root directory -->
+
+    <script src="../lib/js/jquery.js" data-main="main.js"></script>
+
+    <script>
+
+        (function($){
+
+            function waitFor(ms){
+                var deferred = $.Deferred();
+
+                setTimeout(function(){
+                    deferred.resolve(new Date());
+                }, ms);
+
+                return deferred.promise();
+            }
+
+            waitFor(2000).done(function(date){
+                console.log('example finished at' + date.getTime());
+            });
+
+
+
+            // call back methods
+            function waitFor(callBack, ms){
+                setTimeout(callBack(new Date()), ms);
+            }
+
+            waitFor(function(date){
+                console.log('example finished at' + date.getTime());
+            }, 2000)
+
+
+            // more complex
+            function getPlaces(callBackOne){
+                $.ajax({
+                    success: function(){
+                        callBackTwo(function(){
+
+                        })
+                    }
+                })
+            }
+
+
+        })(jQuery)
+
+    </script>
+
+</head>
+<body>
+
+
+
+</body>
+</html>
